@@ -1,72 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <title>Code Quiz</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Code Quiz</title>
+        <link rel="stylesheet" href="./assets/css/style.css">
+    </head>
 
-<body>
-  <!-- top bar with highscore and timer -->
-  <header>
-    <div id="view-high-scores">View High Scores</div>
-    <div class="timer">Time: <span id="timer"></span></div>
-  </header>
+    <body> 
 
-  <!-- intro page before questions appear -->
-  <div id="intro-container" class="show">
-    <div class="intro">
-      <h1>Coding Quiz Challenge</h1>
-      <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-      <button class="start-btn" id="start-game">Start Quiz</button>
+        <header>
+            <h3 id="view-high-scores">View High Scores</h3> 
+            <h3 class="timer">Time: <span id="timer"></span></h3>
+        </header>
+
+        <div id="start-container" class="show">
+            <div class="container start">
+                <h1>Coding Quiz Challenge</h1>  
+                <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!
+                </p>
+                <button class="start btn" id="start-game">Start Quiz</button>
+            </div>    
+        </div>
+
+        <div id="question-container" class="hide">
+            <div class="container questions">
+                <div id="question"></div>
+                <div id="answer-btns" class="btn-grid"></div>
+            </div>
+        </div>
+
+        <div id="result-container" class="hide">
+           <div class="container result">
+            <div id=score-banner>
+                <h1>All done!</h1>
+            </div>  
+            <form id="initials-form" class="initials">
+              <p> Enter Initials:
+                <input type="text" name="initials" id="initials" class="text-input" />
+                <button class="btn startend" id="sumbit-score" type="submit">Submit</button> </p>
+              </form>
+            </div>
+        </div>
+
+        <div id="high-score-container" class="hide">
+          <div class="high-scores container">
+            <h1 class="high-score">High Scores</h1>
+            <ol id="high-score-list" class="score-list"></ol>
+        <div>
+            <button class="btn" id="go-back">Go back</button>
+            <button class="btn" id="clear-high-scores">Clear high scores</button>
+        </div>
+        </div>
     </div>
-  </div>
 
-  <!-- question -->
-  <div id="question-container" class="hide">
-    <div class="questions-box">
-      <div id="question"></div>
-      <div id="answer-btns" class="btn-row"></div>
+    <div class="hide" id="correct">
+        <h2>Correct!</h2>
     </div>
-  </div>
-  
-  <!-- end results -->
-  <div id="result-container" class="hide">
-    <div class="result-box">
-      <div id="score-box">
-        <h1>All done!</h1>
-      </div>
-
-      <!-- submit initials box -->
-      <form id="initials-box" class="initials">
-        <p>Enter Initials: 
-          <input type="text" name="initials" id="initials" class="text-input" />
-          <button class="submit-btn" id="submit-score" type="submit">submit</button>
-        </p>
-      </form>
+    <div class="hide" id="wrong">
+        <h2>Wrong!</h2>
     </div>
-  </div>
 
-  <!-- highscore page -->
-  <div class="highdscore-container" class="hide">
-    <div class="highdscore-box">
-      <h1 class="high-score">High Scores</h1>
-      <li id="high-score-list" class="score-list"></li>
-    </div>
-    <button class="btn" id="go-back">Go back</button>
-    <button class="btn" id="clear-scores">Clear high scores</button>
-  </div>
-
-  <!-- correct/wrong prompts -->
-  <div class="hide" id="correct">
-    <h2> Correct!</h2>
-  </div>
-  <div class="hide" id="wrong">
-    <h2>Wrong</h2>
-  </div>
-
-  <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/script.js"></script> 
 </body>
 </html>
