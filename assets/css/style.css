@@ -1,19 +1,19 @@
 
 /* view high scores  */
-.scores a {
+.highscores a {
     color: violet;
     text-decoration: none;
 }
 
 /* class highscores styling*/
-.scores {
+.highscores {
     position: absolute;
     top: 20px;
     left: 20px;
 }
 
 /* class countdown timer styling*/
-.timer {
+.countdown {
     position: absolute;
     top: 20px;
     right: 20px;
