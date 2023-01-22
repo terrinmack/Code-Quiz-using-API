@@ -1,7 +1,80 @@
 
+/* view high scores  */
+.scores a {
+    color: violet;
+    text-decoration: none;
+}
 
+/* class highscores styling*/
+.scores {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+/* class countdown timer styling*/
+.timer {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+/* general container of pg styling */
+.wrapper {
+    margin: 100px auto 0 auto;
+}
+
+/* general body styling */
 body {
     margin: 0;
     padding: 0;
-    
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100vh;
+    height: 50vh;
 }
+
+/* class intro page */
+.intro {
+    text-align: center;
+}
+
+/* intro text styling */
+.intro p {
+    text-align: center;
+}
+
+/* id-question styling */
+#question {
+    font-size: 50px;
+    font-weight: bold;
+} 
+
+/* id start-btn styling */
+#start-btn {
+    text-align: center;
+}
+
+/* class-button styling */
+.btn {
+    background-color: rgb(106, 31, 198);
+    color: white;
+    border-radius: 10px;
+}
+
+/* button styling */
+button {
+    width: 150px;
+    height: 40px;
+}
+
+/* button hover change styling */
+button:hover {
+    background-color: violet;
+}
+
+
+
+
+
