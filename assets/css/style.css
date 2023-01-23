@@ -1,0 +1,132 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* hide function */
+/* .hide {
+  display: none;
+} */
+
+/* show function */
+.show {
+  display: flex;
+}
+
+/* top bar with scores and timer */
+header {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+/* general score and timer styling-positioning */
+h3 {
+  display: inline;
+  font-size: 1.5rem;
+  padding-left: 30px;
+}
+
+/* view high scores button */
+#view-high-scores {
+  color: violet;
+  cursor: pointer;
+}
+
+/* main container --class general styling */
+.container {
+  flex-direction: column;
+  width: 50%;
+  padding: 30px;
+  /* justify-content: center;
+  align-items: center;
+  text-align: center; */
+}
+
+/* primary heading styling */
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+p {
+  font-size: 1.8rem;
+}
+
+/* question class section */
+.questions {
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+ /* question id  */
+#question {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+/* highscore id */
+#high-score {
+  text-align: left;
+}
+
+/* initials input box */
+.end input {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  outline: thick;
+  border-width: 3px;
+  width: 25%;
+}
+
+/* button styling! */
+.btn {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: purple;
+  padding: 10px;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+.btn:hover {
+  background: violet;
+  cursor: pointer;
+}
+
+/* question choice grid pattern */
+.btn-grid {
+  display: grid;
+  grid-template-rows: repeat(4, auto);
+  grid-gap: 5px;
+  margin-top: 20px;
+}
+
+/* start-end quiz button */
+.startend {
+  width: 30%;
+}
+
+/* answer choice buttons */
+.answerbtn {
+  width: 50%;
+  text-align: left;
+}
+
+/* correct! and wrong! styling after selecting answer */
+h2 {
+  font-size: 2rem;
+  font-style: italic;
+  color: lightgrey;
+  text-align: center;
+  padding-top: 10px;
+  border-top: 3px solid lightgrey;
+}
+
+/* highscore styling */
+ul {
+  font-size: 2.5rem;
+}
