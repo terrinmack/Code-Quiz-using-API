@@ -21,5 +21,34 @@ var questions = [
           choices: [{choice: '1. javascript'}, {choice: '2.  terminal/bash'}, {choice: '3. for loops'}, {choice: '4. console.log'}]
     },
 ]
-// set variables by element
+
+// set variables by get element id!
+var questionContainerE1 = document.getElementById('question-container');
+var startContainerE1 = document.getElementById('intro-container');
+var endContainerE1 = document.getElementById('end-container');
+var scoreContainerE1 = document.getElementById('score-banner');
+var initialsFormE1 = document.getElementById('initials-form');
+var highScoreContainerE1 = document.getElementsByTagName('high-score-container');
+var viewHighScoreE1 = document.getElementById('view-high-scores');
+var highScoreListE1 = document.getElementById('high-score-list');
+var correctE1 = document.getElementById('correct');
+var wrongE1 = document.getElementById('wrong');
+
+var startGameBtnE1 = document.querySelector('#start-game');
+var goBackBtnE1 = document.querySelector('#go-back');
+var clearScoreBtnE1 = document.querySelector('#clear-high-scores');
+
+var questionE1 = document.getElementById('question');
+var answerChoices = document.getElementById('answer-choices');
+var timerE1 = document.getElementById('timer');
+var score = 0;
+var timeLeft;
+var gameOver;
+
+timerE1.innerText =0;
+
+var highScores = [];
+
+var questionIndex = 0;
+var shuffledQuestions;
 
