@@ -42,13 +42,105 @@ var questionE1 = document.getElementById('question');
 var answerChoices = document.getElementById('answer-choices');
 var timerE1 = document.getElementById('timer');
 var score = 0;
-var timeLeft;
-var gameOver;
-
-timerE1.innerText =0;
+var counter =75;
+var timeleft;
+var gameover;
 
 var highScores = [];
+var shuffledQuestions
+var currentQuestion = 0;
 
-var questionIndex = 0;
-var shuffledQuestions;
+// time set
+function setTime() {
+    counter = 75;
+    timeleft = setInterval(function() {
+        counter --;
+        if (counter < 0) {
+            gameover();
+        } else {
+            timerE1.innerText = counter;
+        }
+    }, 1000);
+};
+// time set end
 
+// start quiz
+var startGame = function() {
+    startContainerE1.classList.add('hide');
+    startContainerE1.classList.remove('show');
+    questionContainerE1.classList.remove('hide');
+    questionContainerE1.classList.add('show');
+    setTime();
+    setQuestion()
+}
+
+// start questions
+var setQuestion = function() {
+    restAnswers()
+    showQuestion(shuffledQuestions[currentQuestion]) 
+};
+
+var restAnswers = function() {
+    while (answerChoices.firstChild) {
+        answerChoices.removeChild(answerChoices.firstChild)
+    };
+};
+
+var showQuestion = function(index) {
+    questionE1.innerText = index.q
+    for (var i = 0; i <index.choices.length; i++) {
+        var answerbutton = document.createElement('button')
+        answerbutton.innerText = index.choices[i].choice
+        answerbutton.classList.add('btn')
+        answerbutton.classList.add('answerbtn')
+        answerbutton.addEventListener('click', answerCheck)
+        answerChoices.appendChild(answerbutton)
+    }
+};
+
+// show correct and wrong on screen. remove hide
+var correctAnswer = function() {
+    if (correctE1.className = 'hide') {
+        correctE1.classList.remove('hide')
+        correctE1.classList.add('banner')
+        wrongE1.classList.add('hide')
+        wrongE1.classList.remove('banner')
+    }
+}
+
+var wrongAnswer = function() {
+    if (wrongE1.className = 'hide') {
+        wrongE1.classList.remove('hide')
+        wrongE1.classList.add('banner')
+        correctE1.classList.add('hide')
+        correctE1.classList.remove('banner')
+    }
+}
+
+var answerCheck = function(event) {
+    var selectedanswer = event.target
+        if (shuffledQuestions[currentQuestion].a === selectedanswer.innerText){
+            correctAnswer()
+            score = score + 10
+
+        } else {
+            wrongAnswer()
+            score = score - 10; 
+            if (score < 0) {
+                score = 0
+            }
+            timeleft = timeleft - 10;
+        };
+
+        currentQuestion++
+        if (shuffledQuestions.length > currentQuestion +1) {
+            setQuestion()
+        } else {
+            gameover = 'true';
+            showScore();
+        }
+}
+
+var showScore = function () {
+    
+}
