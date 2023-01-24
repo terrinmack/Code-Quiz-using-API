@@ -42,27 +42,54 @@ var questionE1 = document.getElementById('question');
 var answerChoices = document.getElementById('answer-choices');
 var timerE1 = document.getElementById('timer');
 var score = 0;
-var counter =75;
 var timeleft;
 var gameover;
 
-var highScores = [];
+timerE1.innerText = 0;
+
+var HighScores = [];
 var shuffledQuestions
 var currentQuestion = 0;
 
 // time set
-function setTime() {
-    counter = 75;
-    timeleft = setInterval(function() {
-        counter --;
-        if (counter < 0) {
-            gameover();
-        } else {
-            timerE1.innerText = counter;
-        }
-    }, 1000);
-};
-// time set end
+var setTime = function () {
+    timeleft= 60;
+var timercheck = setInterval(function() {
+    timerE1.innerText = timeleft;
+    timeleft--
+
+    if (gameover) {
+        clearInterval(timercheck)
+    }
+
+    if (timeleft < 0) {
+        showScore()
+        timerE1.innerText = 0
+        clearInterval(timercheck)
+    }
+}, 1000)
+}
+
+var renderStartPage = function () {
+    highScoreContainerE1.classList.add('hide')
+    highScoreContainerE1.classList.remove('show')
+    startContainerE1.classList.remove('hide')
+    startContainerE1.classList.add('show')
+    scoreContainerE1.removeChild(scoreContainerE1.lastChild)
+    currentQuestion = 0
+    gameover = ''
+    timerE1.textContent = 0
+    score = 0
+
+    if (correctE1.className = 'show') {
+        correctE1.classList.remove('show');
+        correctE1.classList.add('hide')
+    }
+    if (wrongE1.className = 'show') {
+        wrongE1.classList.remove('show');
+        wrongE1.classList.add('hide');
+    }
+}
 
 // start quiz
 var startGame = function() {
@@ -70,7 +97,8 @@ var startGame = function() {
     startContainerE1.classList.remove('show');
     questionContainerE1.classList.remove('hide');
     questionContainerE1.classList.add('show');
-    setTime();
+    shuffledQuestions = questions.sort(() => Math.random() -0.5)
+    setTime()
     setQuestion()
 }
 
@@ -126,21 +154,115 @@ var answerCheck = function(event) {
         } else {
             wrongAnswer()
             score = score - 10; 
-            if (score < 0) {
-                score = 0
-            }
             timeleft = timeleft - 10;
         };
 
         currentQuestion++
-        if (shuffledQuestions.length > currentQuestion +1) {
+        if (shuffledQuestions.length > currentQuestion + 1) {
             setQuestion()
         } else {
-            gameover = 'true';
+            gameover = "true";
             showScore();
         }
 }
 
 var showScore = function () {
-    
+    questionContainerE1.classList.add('hide');
+    endContainerE1.classList.remove('hide');
+    endContainerE1.classList.add('show');
+
+    var displayScore = document.createElement('p');
+    displayScore.innerText = ("your final score is " + score + "!");
+    scoreContainerE1.appendChild(displayScore);
 }
+
+var createHighScore = function(event) {
+    event.preventDefault()
+    var initials = document.querySelector('#initials').ariaValueMax;
+    if (!initials) {
+        window.alert("Please enter your initials!");
+        return;
+    }
+
+    initialsFormE1.reset();
+
+    var HighScore = {
+        initials: initials,
+        score: score
+    }
+
+    HighScores.push(HighScore);
+    HighScores.sort((a, b) => {return b.score-a.score});
+
+    while (highScoreListE1.firstChild) {
+        highScoreListE1.removeChild(highScoreListE1.firstChild)
+    }
+
+    for (var i =0; i < HighScores.length; i++) {
+        var highscoreE1 = document.createElement('ul');
+        highScoreListE1.className = 'high-score';
+        highscoreE1.innerHTML = HighScores[i].initials + '' + HighScores[i].score;
+        highScoreListE1.appendChild(highscoreE1);
+    }
+
+    saveHighScore();
+    displayHighScore();
+}
+
+var saveHighScore = function () {
+    localStorage.setItem('HighScores', JSON.stringify(HighScores))
+}
+
+var loadHighScore = function () {
+    var loadedHighScores = localStorage.getItem('HighScores')
+    if (!loadedHighScores) {
+        return false;
+    }
+
+    loadHighScores = JSON.parse(loadHighScores);
+    loadedHighScoress.srot((a, b) => {return b.score-a.score})
+
+    for (var i = 0; i < loadHighScores.length; i++) {
+        var highscoreE1 = document.createElement('ul');
+        highscoreE1.className = 'high-score';
+        highscoreE1.innerText = loadedHighScoress[i].initials + '' + loadedHighScores[i].score;
+        highScoreListE1.appendChild(highscoreE1);
+
+        HighScores.push(loadHighScores[i]);
+    }
+}
+
+var displayHighScores = function() {
+    highScoreContainerE1.classList.remove('hide');
+    highScoreContainerE1.classList.add('show');
+    gameover = 'true'
+
+    if (endContainerE1.className = 'show') {
+        endContainerE1.classList.remove('show');
+        endContainerE1.classList.add('hide');
+    }
+    if (startContainerE1.className = 'show') {
+        startContainerE1.classList.remove('show');
+        startContainerE1.classList.add('hide');
+    }
+    if (questionContainerE1.className = 'show') {
+        questionContainerE1.classList.remove('show');
+        questionContainerE1.classList.add('hide');
+    }
+    if (correctE1.className = 'show') {
+        correctE1.classList.remove('show');
+        correctE1.classList.add('hide');
+    }
+    if (wrongE1.className = 'show') {
+        wrongE1.classList.remove('show');
+        wrongE1.classList.add('hide');
+    }
+}
+
+startGameBtnE1.addEventListener('click', startGame)
+initialsFormE1.addEventListener('submit', createHighScore)
+viewHighScoreE1.addEventListener('click'. displayHighScores)
+goBackBtnE1.addEventListener('click', renderStartPage)
+clearScoreBtnE1.addEventListener('click', clearScores)
+
+
