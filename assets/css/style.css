@@ -1,131 +1,106 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 3vh;
 }
 
-/* hide function */
-.hide {
-  display: none;
+/* header styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
 }
 
-/* show function */
-.show {
-  display: flex;
+li {
+    font-size: 1.5rem;
+    padding-top: 20px;
+    list-style: none;
 }
 
-/* top bar with scores and timer */
-header {
-  display: flex;
-  justify-content: space-between;
-  width: 80%;
+.highscore-link {
+    color: violet;
+    padding-left: 30px;
 }
 
-/* general score and timer styling-positioning */
-h3 {
-  display: inline;
-  font-size: 1.5rem;
-  padding-left: 30px;
+span {
+    font-size: 1.5rem;
 }
 
-/* view high scores button */
-#view-high-scores {
-  color: violet;
-  cursor: pointer;
+#timer {
+    padding-right: 30px;
 }
 
-/* main container class general styling */
-.container {
-  flex-direction: column;
-  padding: 30px;
-  text-align: center;
+
+/* start screen styling */
+#start-container {
+    padding-top: 100px;
+    padding-left: 200px;
+    padding-right: 200px;
+    text-align: center;
 }
 
-/* primary heading styling */
+/* generalized main heading styling in start screen */
 h1 {
-  padding-top: 100px;
-  text-align: center;
-  font-size: 3rem;
-  font-weight: bold;
+    font-size: 3rem;
+    padding: 20px;
 }
 
+/* generalized subtext styling */
 p {
-  font-size: 1.8rem;
+    font-size: 1.5rem;
+    padding: 20px;
 }
 
-/* question class section */
-.questions {
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
-}
- /* question id  */
-#question {
-  font-size: 2.5rem;
-  font-weight: bold;
+/* buttons. start.submit.go back.clear highscores */
+a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: black;
 }
 
-/* highscore id */
-#high-score {
-  text-align: left;
+button {
+    background-color: purple;
+    color: white;
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 10px;
+    width: 20%;
+    border-radius: 20px;
 }
 
-/* initials input box */
-.end input {
-  margin-top: 20px;
-  font-size: 1.5rem;
-  outline: thick;
-  border-width: 3px;
-  width: 25%;
+button:hover {
+    background-color: violet;
 }
 
-/* button styling! */
-.btn {
-  color: white;
-  font-size: 1.5rem;
-  font-weight: bold;
-  background: purple;
-  padding: 10px;
-  border-radius: 15px;
-  margin-top: 20px;
-}
-
-.btn:hover {
-  background: violet;
-  cursor: pointer;
-}
-
-/* question choice grid pattern */
-.btn-grid {
-  display: grid;
-  grid-template-rows: repeat(4, auto);
-  grid-gap: 5px;
-  margin-top: 20px;
-}
-
-/* start-end quiz button */
-.startend {
-  width: 30%;
-}
-
-/* answer choice buttons */
-.answerbtn {
-  width: 50%;
-  text-align: left;
-}
-
-/* correct! and wrong! styling after selecting answer */
+/* generalized styling for h2 headings */
 h2 {
-  font-size: 2rem;
-  font-style: italic;
-  color: lightgrey;
-  text-align: center;
-  padding-top: 10px;
-  border-top: 3px solid lightgrey;
+    font-size: 2.5rem;
+    text-align: center;
+    padding: 20px;
 }
 
-/* highscore styling */
-ul {
-  font-size: 2.5rem;
+/* end screen section */
+#end-container {
+    align-items: center;
+    text-align: center;
+}
+
+.initials {
+    font-size: 1.5rem;
+}
+
+input {
+    border-radius: 3px;
+    padding: 5px;
+    text-align: center;
+
+}
+/* highscore section */
+#highscore-container {
+    align-items: center;
+    text-align: center;
+}
+
+.go-back {
+    color: white;
 }

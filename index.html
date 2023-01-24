@@ -6,73 +6,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./assets/css/style.css">
   <title>Code Quiz</title>
-
 </head>
+
 <body>
-<!-- make ids for almost all sections to get element by id later -->
-  <!-- top bar with scores and timer -->
+
+  <!-- view highscores and timer -->
   <header>
-    <h3 id="view-high-scores">View High Scores</h3>
-    <h3 class="timer">Time: <span id="timer"></span></h3>
+    <ul class="navbar">
+      <li><a class="highscore-link" href="#highscore-container">View Highscores</a></li>
+      <li class="timer">Time: <span id="timer">0</span></li>
+    </ul>
   </header>
+
+  <!-- start screen -->
+  <section id="start-container" class="show">
+    <h1>Code Quiz Challenge!</h1>
+      <p>Try and answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your your score time by 10 seconds!</p>
+      <button id="start-btn">Start Quiz</button>
+  </section>
+
+  <!-- question screen -->
+  <section id="question-container" class="hide">
+    <h2 id="question-title"></h2>
+      <ul id="choices"></ul>
+        <div id="response" class="hide"></div>
+  </section>
   
-  <!-- intro screen -->
-  <!-- include show/hide functions in the containers -->
-  <div id="intro-container" class="show">
-    <div class="container intro">
-      <h1>Code Quiz Challenge!</h1>
-      <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!
-      </p>
-      <!-- start button to be used at the end of the quiz to restart quiz -->
-      <button class="btn startend" id="start-game">Start Quiz</button>
-    </div>
-  </div>
+  <!-- end screen -->
+  <section id="end-container" class="hide">
+    <h2 id="all-done">All done!</h2>
+      <p>Your final score is <span id="final-score">0</span></p>
+        <label for="initials" class="initials">Enter your initials:</label>
+          <input type="text" name="initials" maxlength="5" id="initials">
+          <button id="submit-btn" type="submit">Submit</button>
+  </section>
 
-  <!-- questions start -->
-  <div id="question-container" class="hide">
-    <div class="container questions">
-      <!-- to refer back to listed questions in script -->
-      <div id="question"></div>
-      <!-- create a grid for buttons to make it easier in styling -->
-      <div id="answer-choices" class="btn-grid"></div>
-    </div>
-  </div>
+  <!-- highscore screen with lists -->
+  <section id="highscore-container" class="hide">
+    <h2>Highscores</h2>
+      <li id="highscore-banner"></li>
+        <button id="go-back-btn"><a class="go-back" href="#start-container">Go back</a></button>
+        <button id="clear-score-btn">Clear scores</button>
+  </section>
 
-  <!-- correct/wrong popup under quiz -->
-  <div class="hide" id="correct">
-    <h2>Correct!</h2>
-  </div>
-
-  <div class="hide" id="wrong">
-    <h2>Wrong!</h2>
-  </div>
-
-  <!-- quiz end screen -->
-  <div id="end-container" class="hide">
-    <div class="container end">
-      <div id="score-banner">
-        <h1>All done!</h1>
-      </div>
-      <form id="initials-form" class="initials">
-        <p>Enter your initials here: <input type="text" name="initials" id="initials" class="text-input"/>
-          <button class="btn startend" id="submit-score" type="submit">Submit</button>
-        </p>
-      </form>
-    </div>
-  </div>
-
-  <!-- highscore screen -->
-  <div id="high-score-container" class="hide">
-    <div class="high-score container">
-      <h1>High Scores</h1>
-      <ul id="high-score-list" class="score-list"></ul>
-      <div>
-        <button class="btn" id="go-back">Go back</button>
-        <button class="btn" id="clear-high-scores">Clear high scores</button>
-      </div>
-    </div>
-  </div>
-
+  <!-- javascript -->
   <script src="./assets/js/script.js"></script>
+
 </body>
 </html>
