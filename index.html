@@ -21,6 +21,7 @@
   <!-- start screen -->
   <section id="start-container" class="show">
     <h1>Code Quiz Challenge!</h1>
+    <hr>
       <p>Try and answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your your score time by 10 seconds!</p>
       <button id="start-btn">Start Quiz</button>
   </section>
@@ -35,6 +36,7 @@
   <!-- end screen -->
   <section id="end-container" class="hide">
     <h2 id="all-done">All done!</h2>
+    <hr>
       <p>Your final score is <span id="final-score">0</span></p>
         <label for="initials" class="initials">Enter your initials:</label>
           <input type="text" name="initials" maxlength="5" id="initials">
@@ -44,7 +46,8 @@
   <!-- highscore screen with lists -->
   <section id="highscore-container" class="hide">
     <h2>Highscores</h2>
-      <li id="highscore-banner"></li>
+    <hr>
+      <li id="highscore-list">penalize</li>
         <button id="go-back-btn"><a class="go-back" href="#start-container">Go back</a></button>
         <button id="clear-score-btn">Clear scores</button>
   </section>
