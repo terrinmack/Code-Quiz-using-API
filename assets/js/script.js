@@ -33,6 +33,10 @@ var questions = [
 
 // variables
 var startContainerEl = document.querySelector('#start-container');
+var questionContainerEl = document.querySelector('#question-container');
+var endContainerEl = document.querySelector('#end-container');
+var highscoreContainerEl = document.querySelector('#highscore-container');
+
 var timerEl = document.querySelector('#timer');
 var startBtn = document.querySelector('#start-btn')
 
@@ -44,6 +48,7 @@ var timerCount;
 function startQuiz() {
     timerCount = 75;
     startContainer.addClass('hide');
+    questionContainerEl.removeClass('hide');
     renderQuestions();
     startTimer();
 }
@@ -64,6 +69,8 @@ function startTimer() {
     }, 1000);
   }
   
+
+//   button events
   startBtn.addEventListener('click', startQuiz)
 
 // question end
