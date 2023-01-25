@@ -38,42 +38,61 @@ var endContainerEl = document.querySelector('#end-container');
 var highscoreContainerEl = document.querySelector('#highscore-container');
 
 var timerEl = document.querySelector('#timer');
-var startBtn = document.querySelector('#start-btn')
+var startBtn = document.querySelector('#start-btn');
+var submitBtn = document.querySelector('#submit-btn');
+var clearScoreBtn = document.querySelector('#clear-score-btn');
+var viewHighscoreBtn = document.querySelector('.highscore-link')
+
+var choicesEl = document.querySelector('#choices');
+var responseEl = document.querySelector('#response');
 
 var timer;
-var timerCount;
+var timerCount = 75;
+var currentQuestionIndex = 0;
+var questionTitle = '';
+var answerChoices = '';
 
 
-// game start
+// start quiz
 function startQuiz() {
-    timerCount = 75;
-    startContainer.addClass('hide');
-    questionContainerEl.removeClass('hide');
-    renderQuestions();
+    // hide start screen
+    startContainerEl.setAttribute('class', 'hide');
+    // show question screen
+    questionContainerEl.setAttribute('class', 'show');
+    // start timer
     startTimer();
 }
 
-// timer start
+// render start page/loads
+function init() {
+    highscoreContainerEl.setAttribute('class','hide');
+    startContainerEl.setAttribute('class', 'show');
+    endContainerEl.setAttribute('class', 'hide');
+    questionContainerEl.setAttribute('class', 'hide');
+}
+
+// start timer
 function startTimer() {
     timer = setInterval(function() {
-      timerCount--;
-      timerEl.textContent = timerCount;
-      if (timerCount >= 0) {
-          clearInterval(timer);
-          endQuiz();
-      }
-      if (timerCount === 0) {
-        clearInterval(timer);
-        endQuiz();
-      }
-    }, 1000);
-  }
-  
+        console.log(timer);
+        timerCount--;
+        timerEl.textContent = timerCount
+         if (timerCount === 0) {
+            clearInterval(timer);
+            endQuiz();
+        }
+    }, 1000)
+}
 
-//   button events
-  startBtn.addEventListener('click', startQuiz)
+// render questions 
 
-// question end
+// highscore header button
+function viewHighscores() {
+    highscoreContainerEl.setAttribute('class','show');
+    startContainerEl.setAttribute('class', 'hide');
+    endContainerEl.setAttribute('class', 'hide');
+    questionContainerEl.setAttribute('class', 'hide');
+}
 
-// highscore page
-
+// button listeners
+startBtn.addEventListener('click', startQuiz);
