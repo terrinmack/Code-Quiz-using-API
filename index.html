@@ -12,9 +12,8 @@
 <body>
 <!-- navbar -->
   <nav>
-    <button class="view-highscores" href=".highscore-container" id="show">View Highscores</button>
-    <div class="timer">Time: 
-      <span class="time-left">0</span>
+    <button class="view-highscores" id="show">View Highscores</button>
+    <div class="timer">Time: <span class="time-left">0</span>
     </div>
   </nav>
 
@@ -28,7 +27,7 @@
 <!-- quiz screen -->
   <section class="quiz-container" id="hide">
     <h2 class="question">Question Text</h2>
-      <ul>
+      <ul class="btn-grid">
           <button id="answer0" class="answer-btn">Answer 1</button>
           <button id="answer1" class="answer-btn">Answer 2</button>
           <button id="answer2" class="answer-btn">Answer 3</button>
@@ -44,7 +43,7 @@
   <section class="result-container" id="hide">
     <h1 class="all-done">All done!</h1>
       <div>
-        <p>Your final score is <span id="final-score">0</span>
+        <p class="your-final-score">Your final score is <span id="final-score">0</span>
         </p>
         <form id="initials-form" class="initials">
           <p>Enter your Initials:
@@ -57,14 +56,13 @@
 
 <!-- highscore screen -->
   <section class="highscore-container" id="hide">
-    <ul>
-      <li class="initials-list"></li>
-    </ul>
-    <button class="go-back-btn">Go back</button>
+    <ul class="initials-list"></ul>
+    <button onClick='window.location.reload()' class="go-back-btn">Go back</button>
     <button class="clear-highscores">Clear highscores</button>
   </section>
 
-
+<!-- javascript link -->
   <script src="./assets/js/script.js"></script>
+
 </body>
 </html>

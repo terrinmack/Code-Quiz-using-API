@@ -29,35 +29,39 @@ var questions = [
         title: "A very useful tool used during development and debugging for printing content to the debugger is:",
         choices: ["Javascript", "Terminal/bash", "For loops", "Console.log"],
         correctAnswer: "Console.log"
-    }
+    },
+    {
+        // question 5
+        title: "BONUS: What breed of dog(s) does Terri own?",
+        choices: ["German Shepherd", "Australian Shepherd", "French Bulldog", "Shiba"],
+        correctAnswer: "Australian Shepherd"
+    },
 ];
 
 // variables
 var timer;
-var timerCount = 15;
+var timerCount = 75;
 var timerEl = document.querySelector('.time-left')
 
 var startContainerEl = document.querySelector('.start-container');
 var questionContainerEl = document.querySelector('.quiz-container');
 var resultContainerEl = document.querySelector('.result-container');
-var highscoreContaineEl = document.querySelector('.highscore-container');
+var highscoreContainerEl = document.querySelector('.highscore-container');
 
 var finalScore = document.querySelector('#final-score');
 
 var questionTitle = document.querySelector('.question');
+var btnGrd = document.querySelector('.btn-grid')
 var feedbackContainer = document.querySelector('.feedback');
 var feedbackEl = document.querySelector('.feedback-text')
 
 var startBtn = document.querySelector('.start-btn');
 var submitBtn = document.querySelector('.submit-btn');
+var viewHighscoreBtn = document.querySelector('.view-highscores');
 
 var currentQuestion = 0;
 var score = 0;
 
-// render start page 
-function init() {
-
-}
 // start quiz
 function startQuiz() {
     // hide start screen
@@ -119,16 +123,17 @@ for (i = 0; i < answerSelections; i++) {
         feedbackContainer.setAttribute('id', 'show');
             if (this.getAttribute('correctAnswer') == this.innerHTML) {
                 feedbackEl.innerText = 'Correct!'
-                score = + 10;
+                score += 10;
             } else {
                 feedbackEl.innerText = 'Wrong!';
-                timerCount = - 10; 
+                timerCount -= 10; 
                     if (timerCount < 0) {timerCount = 0}
             }
             currentQuestion++;
             showNextQuestion();
 
             console.log(button)
+            console.log(feedbackEl.innerText)
     });
 }
 
@@ -137,15 +142,13 @@ function endQuiz () {
     // end timer
     clearInterval(timer);
     // hide questions
-    questionContainerEl.setAttribute('id', 'hide');
-    // show last correct/wrong answer
-    feedbackContainer.setAttribute('id', 'show');
+    questionTitle.setAttribute('id', 'hide');
+    btnGrd.setAttribute('id', 'hide')
     // show results
     resultContainerEl.setAttribute('id', 'show');
     // show final score
-    finalScore.innerText = score;
-    
-}
+    finalScore.innerText = score; 
+};
 
 // submit score!
 submitBtn.addEventListener('click', function(event) {
@@ -153,7 +156,18 @@ submitBtn.addEventListener('click', function(event) {
     // hide results page
     resultContainerEl.setAttribute('id', 'hide');
     // show highscore page
-    highscoreContaineEl.setAttribute('id', 'show');
-
-
+    highscoreContainerEl.setAttribute('id', 'show');
 });
+
+viewHighscoreBtn.addEventListener('click', function(event){
+    event.preventDefault();
+    clearInterval(timer);
+    // hide start page
+    startContainerEl.setAttribute('id', 'hide');
+    // if questions are opened, hide question page
+    questionContainerEl.setAttribute('id', 'hide');
+    // if results are opened, hide results
+    resultContainerEl.setAttribute('id', 'hide');
+    // show highscsore page
+    highscoreContainerEl.setAttribute('id', 'show');
+})

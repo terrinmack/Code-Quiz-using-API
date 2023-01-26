@@ -70,6 +70,10 @@ button.view-highscores {
     margin-bottom: 50px;
 }
 
+.your-final-score {
+    margin: 30px;
+}
+
 /* button styling */
 button {
     cursor: pointer;
