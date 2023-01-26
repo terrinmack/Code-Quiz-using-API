@@ -6,15 +6,39 @@
     text-align: center;
     justify-content: center;
     font-size: 20px;
+    box-sizing: border-box;
+}
+
+/* hide/show ids */
+#show {
+    display: flexbox;
+}
+
+/* #hide {
+    display: none;
+} */
+
+/* highscore button styling */
+button.view-highscores {
+    margin-right: 1000px;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+}
+
+button.view-highscores:hover {
+    color: violet;
 }
 
 /* timer countdown */
 .timer {
     margin-right: 100px;
-    margin-top: -40px;
+    margin-top: -70px;
     text-align: right;
 }
 
+/* start screen styling */
 .start-title {
     font-size: 40px;
     padding: 50px;
@@ -35,11 +59,17 @@ button {
     color: white;
     padding: 10px;
     margin-top: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 button:hover {
     background-color: violet;
+}
+
+/* feedback styling for correct/wrong responses */
+/* gray border bar above feedback */
+hr {
+    margin-top: 50px;
 }
 
 .feedback-text {
@@ -47,3 +77,9 @@ button:hover {
     margin: 20px;
     color: lightgrey;
 }
+
+/* all done title styling for result page */
+.all-done {
+    font-size: 50px;
+}
+
