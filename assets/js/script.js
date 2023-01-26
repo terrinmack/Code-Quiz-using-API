@@ -2,68 +2,55 @@ var questions = [
     {
         // question 0
         title: "Commonly used data types do NOT include:",
-        a: "Strings", 
-        b: "Booleans", 
-        c: "Alerts", 
-        d: "Numbers",
-        correctAnswer: "c"
+        choices: ["Strings", "Booleans", "Alerts", "Numbers",],
+        correctAnswer: "Alerts"
     },
     {
         // question 1
         title: "The condition in an if / else statement is enclosed within ____.",
-        a: "Quotes", 
-        b: "Curly brackets", 
-        c: "Parentheses", 
-        d: "Square brackets",
-        correctAnswer: "c"
+        choices: ["Quotes", "Curly brackets", "Parentheses", "Square brackets"],
+        correctAnswer: "Parantheses"
     },
     {
         // question 2
         title: "Arrays in Javascript can be used to store ____.",
-        a: "Numbers and strings", 
-        b: "Other arrays", 
-        c: "Booleans", 
-        d: "All of the above",
-        correctAnswer: "d"
+        choices: ["Numbers and strings", "Other arrays", "Booleans", "All of the above"],
+        correctAnswer: "All of the above"
     },
     {
         // question 3
         title: "String values must be enclosed within ____ when being assigned to variables.",
-        a: "Commmas", 
-        b: "Curly brackets", 
-        c: "Quotes", 
-        d: "Parentheses",
-        correctAnswer: "c"
+        choices: ["Commmas", "Curly brackets", "Quotes", "Parentheses"],
+        correctAnswer: "Quotes"
     },
     {
         // question 4
         title: "A very useful tool used during development and debugging for printing content to the debugger is:",
-        a: "Javascript", 
-        b: "2. Terminal/bash", 
-        c: "3. For loops", 
-        d: "Console.log",
-        correctAnswer: "d"
+        choices: ["Javascript", "Terminal/bash", "For loops", "Console.log"],
+        correctAnswer: "Console.log"
     }
 ];
 
 // variables
 var timer;
-var timerCount = 75;
+var timerCount = 15;
 var timerEl = document.querySelector('.time-left')
+
 var startContainerEl = document.querySelector('.start-container');
 var questionContainerEl = document.querySelector('.quiz-container');
-var viewHighscoreNav = document.querySelector('.view-highscores');
-var answersEls = document.querySelector('.answer');
-var questionEl = document.querySelector('.question');
-var a_text = document.querySelector('#a');
-var b_text = document.querySelector('#b');
-var c_text = document.querySelector('#c');
-var d_text = document.querySelector('#d');
-var startBtn = document.querySelector('.start-btn')
-var submitBtn = document.querySelector('.submit-btn')
+var resultContainerEl = document.querySelector('.result-container');
+var highscoreContaineEl = document.querySelector('.highscore-container');
 
-let currentQuestion = 0;
-let score = 0;
+var finalScore = document.querySelector('#final-score');
+
+var questionTitle = document.querySelector('.question');
+var feedbackEl = document.querySelector('.feedback-text');
+
+var startBtn = document.querySelector('.start-btn');
+var submitBtn = document.querySelector('.submit-btn');
+
+var currentQuestion = 0;
+var score = 0;
 
 // start quiz
 function startQuiz() {
@@ -71,16 +58,9 @@ function startQuiz() {
     startContainerEl.setAttribute('id', 'hide');
     // show question screen
     questionContainerEl.setAttribute('id', 'show');
-    // hide viewhighscore button
-    var currentQuestionData = questions[currentQuestion];
-    questionEl.innerText = currentQuestionData.title;
-    a_text.innerText = currentQuestionData.a;
-    b_text.innerText = currentQuestionData.b;
-    c_text.innerText = currentQuestionData.c;
-    d_text.innerText = currentQuestionData.d;
     // start timer
     startTimer();
-    console.log(questions)
+    showNextQuestion();
 }
 
 // start timer
@@ -98,4 +78,84 @@ function startTimer() {
     console.log(timer)
 }
 
+// start button event listener
 startBtn.addEventListener('click', startQuiz)
+
+// show questions
+function showNextQuestion() {
+    var question = questions[currentQuestion];
+
+    if (question === undefined) {
+        endQuiz();
+    } else {
+        questionTitle.innerHTML = question.title;
+        question.choices.forEach(function(choice, index) {
+            var button = document.querySelector('#answer' + index);
+            button.innerHTML = choice;
+            button.setAttribute('correctAnswer', question.correctAnswer)
+        });
+    }
+    console.log('Question #' + currentQuestion);
+    console.log(question);
+}
+
+// check answer/looping
+var answerSelections = 4;
+for (i = 0; i < answerSelections; i++) {
+
+    var button = document.querySelector('#answer' + i);
+    button.addEventListener('click', function () {
+        feedbackEl.setAttribute('id', 'show');
+            if (button === ('correctAnswer')) {
+                answerCorrect
+            } else {
+                answerWrong
+            }
+            currentQuestion++;
+            showNextQuestion();
+    });
+}
+
+// correct answer
+var answerCorrect = function() {
+    feedbackEl.textContent = 'Correct!';
+    score = + 10;
+}
+
+// wrong answer
+var answerWrong = function() {
+    feedbackEl.textContent = 'Wrong!';
+    timerCount = - 10
+    score = - 10; 
+    // if (score <= 0) {score = 0};
+}
+
+// end quiz
+function endQuiz () {
+    // end timer
+    clearInterval(timer);
+    // hide questions
+    questionContainerEl.setAttribute('id', 'hide');
+    // show results
+    resultContainerEl.setAttribute('id', 'show');
+    // show final score
+    finalScore.innerText = score;
+    
+}
+
+// submit score!
+submitBtn.addEventListener('click', function() {
+    console.log(initials.value);
+    var userInitials = initials.value;
+    var storeScores = JSON.parse(localStorage.getItem('highscores'))
+    if (storeScores === null) {
+        storeScores = [];
+    }
+    storeScores.push({
+        initials: userInitials,
+        score: score,
+    });
+    localStorage.setItem('highscores', JSON.stringify(storeScores));
+})
+
+

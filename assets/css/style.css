@@ -27,9 +27,6 @@ button.view-highscores {
     padding: 0;
 }
 
-button.view-highscores:hover {
-
-}
 
 /* timer countdown */
 .timer {
@@ -37,7 +34,6 @@ button.view-highscores:hover {
     margin-top: -30px;
     text-align: right;
 }
-
 /* start screen styling */
 .start-title {
     font-size: 40px;
@@ -50,9 +46,28 @@ button.view-highscores:hover {
     margin-bottom: 40px;
 }
 
+/* container styling for all containers */
+
+/* start container styling */
+.start-container {
+    margin-top: 200px;
+}
+/* question container styling */
+.quiz-container {
+    margin-top: 200px;
+}
+/* result container styling */
+.result-container {
+    margin-top: 200px;
+}
+.highscore-container {
+    margin-top: 200px;
+}
+
 /* question title styling */
 .question {
     font-size: 30px;
+    margin-bottom: 50px;
 }
 
 /* button styling */
@@ -86,5 +101,4 @@ hr {
 .all-done {
     font-size: 50px;
 }
-
 

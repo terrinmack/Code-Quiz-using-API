@@ -12,8 +12,10 @@
 <body>
 <!-- navbar -->
   <nav>
-    <button class="view-highscores" href=".highscore-container">View Highscores</button>
-    <div class="timer">Time: <span class="time-left">0</span></div>
+    <button class="view-highscores" href=".highscore-container" id="show">View Highscores</button>
+    <div class="timer">Time: 
+      <span class="time-left">0</span>
+    </div>
   </nav>
 
 <!-- start screen -->
@@ -27,20 +29,23 @@
   <section class="quiz-container" id="hide">
     <h2 class="question">Question Text</h2>
       <ul>
-          <button id="a" class="answer">Answer</button>
-          <button id="b" class="answer">Answer</button>
-          <button id="c" class="answer">Answer</button>
-          <button id="d" class="answer">Answer</button>    
+          <button id="answer0" class="answer-btn">Answer 1</button>
+          <button id="answer1" class="answer-btn">Answer 2</button>
+          <button id="answer2" class="answer-btn">Answer 3</button>
+          <button id="answer3" class="answer-btn">Answer 4</button>    
       </ul>
       <hr>
-        <div class="feedback" id="hide"></div>
-        <p class="feedback-text">Feedback Text</p>
+        <div class="feedback" id="hide">
+          <p class="feedback-text">Feedback Text</p>
+        </div>
   </section>
   
 <!-- result screen -->
   <section class="result-container" id="hide">
     <h1 class="all-done">All done!</h1>
       <div>
+        <p>Your final score is <span id="final-score">0</span>
+        </p>
         <form id="initials-form" class="initials">
           <p>Enter your Initials:
             <input type="text" name="initials" id="initials" class="text-input" />
