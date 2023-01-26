@@ -14,9 +14,9 @@
     display: flexbox;
 }
 
-/* #hide {
+#hide {
     display: none;
-} */
+}
 
 /* highscore button styling */
 button.view-highscores {
@@ -28,13 +28,13 @@ button.view-highscores {
 }
 
 button.view-highscores:hover {
-    color: violet;
+
 }
 
 /* timer countdown */
 .timer {
     margin-right: 100px;
-    margin-top: -70px;
+    margin-top: -30px;
     text-align: right;
 }
 
@@ -50,6 +50,10 @@ button.view-highscores:hover {
     margin-bottom: 40px;
 }
 
+/* question title styling */
+.question {
+    font-size: 30px;
+}
 
 /* button styling */
 button {
@@ -82,4 +86,5 @@ hr {
 .all-done {
     font-size: 50px;
 }
+
 
