@@ -1,123 +1,42 @@
+
 * {
-    margin: 0;
     padding: 0;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 3vh;
-    box-sizing: border-box;
-}
-
-/* header styling */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-}
-
-li {
-    font-size: 1.5rem;
-    padding-top: 20px;
-    list-style: none;
-}
-
-.highscore-link {
-    color: violet;
-    padding-left: 30px;
-}
-
-span {
-    font-size: 1.5rem;
-}
-
-#timer {
-    padding-right: 30px;
-}
-
-
-/* start screen styling */
-#start-container {
-    padding-top: 100px;
-    padding-left: 200px;
-    padding-right: 200px;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
+    justify-content: center;
+    font-size: 20px;
 }
 
-/* generalized main heading styling in start screen */
-h1 {
-    font-size: 3rem;
-    padding: 20px;
+
+/* timer countdown */
+.timer {
+    margin-right: 100px;
+    margin-top: -40px;
+    text-align: right;
 }
 
-/* generalized subtext styling */
-p {
-    font-size: 1.5rem;
-    padding: 20px;
+.start-title {
+    font-size: 40px;
+    padding: 50px;
 }
 
-/* buttons. start.submit.go back.clear highscores */
-a {
-    font-size: 1.5rem;
-    text-decoration: none;
-    color: black;
+.start-intro {
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
+
+/* button styling */
 button {
+    cursor: pointer;
+    border-radius: 10px;
     background-color: purple;
     color: white;
-    cursor: pointer;
-    font-size: 1.5rem;
     padding: 10px;
-    width: 20%;
-    border-radius: 20px;
+    margin-top: 20px;
 }
 
 button:hover {
     background-color: violet;
-}
-
-/* generalized styling for h2 headings */
-h2 {
-    font-size: 2.5rem;
-    text-align: center;
-    padding: 20px;
-}
-
-/* end screen section */
-#end-container {
-    align-items: center;
-    text-align: center;
-}
-
-.initials {
-    font-size: 1.5rem;
-}
-
-/* initials input box */
-input {
-    border-radius: 5px;
-    padding: 5px;
-    text-align: center;
-
-}
-/* highscore section */
-#highscore-container {
-    align-items: center;
-    text-align: center;
-}
-#highscore-container li {
-    list-style: circle;
-    padding: 20px;
-    font-size: 1.5rem;
-    text-align: left;
-    padding-left: 30%;
-}
-.go-back {
-    color: white;
-}
-
-/* display hide/show */
-.hide {
-    display: none;
-}
-
-.show {
-    display: flexbox;
 }
