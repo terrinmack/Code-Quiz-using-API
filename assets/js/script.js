@@ -1,3 +1,4 @@
+// question arrays
 var questions = [ 
     {
         // question 0
@@ -9,7 +10,7 @@ var questions = [
         // question 1
         title: "The condition in an if / else statement is enclosed within ____.",
         choices: ["Quotes", "Curly brackets", "Parentheses", "Square brackets"],
-        correctAnswer: "Parantheses"
+        correctAnswer: "Parentheses"
     },
     {
         // question 2
@@ -44,7 +45,8 @@ var highscoreContaineEl = document.querySelector('.highscore-container');
 var finalScore = document.querySelector('#final-score');
 
 var questionTitle = document.querySelector('.question');
-var feedbackEl = document.querySelector('.feedback-text');
+var feedbackContainer = document.querySelector('.feedback');
+var feedbackEl = document.querySelector('.feedback-text')
 
 var startBtn = document.querySelector('.start-btn');
 var submitBtn = document.querySelector('.submit-btn');
@@ -52,6 +54,10 @@ var submitBtn = document.querySelector('.submit-btn');
 var currentQuestion = 0;
 var score = 0;
 
+// render start page 
+function init() {
+
+}
 // start quiz
 function startQuiz() {
     // hide start screen
@@ -73,8 +79,12 @@ function startTimer() {
          if (timerCount === 0) {
             clearInterval(timer);
             endQuiz();
+        } if (timerCount < 0) {
+            clearInterval(timer);
+            endQuiz();
         }
     }, 1000)
+
     console.log(timer)
 }
 
@@ -100,34 +110,26 @@ function showNextQuestion() {
 }
 
 // check answer/looping
+// why wont the points keep adding? why does the timer go neg?
 var answerSelections = 4;
 for (i = 0; i < answerSelections; i++) {
 
     var button = document.querySelector('#answer' + i);
     button.addEventListener('click', function () {
-        feedbackEl.setAttribute('id', 'show');
-            if (button === ('correctAnswer')) {
-                answerCorrect
+        feedbackContainer.setAttribute('id', 'show');
+            if (this.getAttribute('correctAnswer') == this.innerHTML) {
+                feedbackEl.innerText = 'Correct!'
+                score = + 10;
             } else {
-                answerWrong
+                feedbackEl.innerText = 'Wrong!';
+                timerCount = - 10; 
+                    if (timerCount < 0) {timerCount = 0}
             }
             currentQuestion++;
             showNextQuestion();
+
+            console.log(button)
     });
-}
-
-// correct answer
-var answerCorrect = function() {
-    feedbackEl.textContent = 'Correct!';
-    score = + 10;
-}
-
-// wrong answer
-var answerWrong = function() {
-    feedbackEl.textContent = 'Wrong!';
-    timerCount = - 10
-    score = - 10; 
-    // if (score <= 0) {score = 0};
 }
 
 // end quiz
@@ -136,6 +138,8 @@ function endQuiz () {
     clearInterval(timer);
     // hide questions
     questionContainerEl.setAttribute('id', 'hide');
+    // show last correct/wrong answer
+    feedbackContainer.setAttribute('id', 'show');
     // show results
     resultContainerEl.setAttribute('id', 'show');
     // show final score
@@ -144,18 +148,12 @@ function endQuiz () {
 }
 
 // submit score!
-submitBtn.addEventListener('click', function() {
-    console.log(initials.value);
-    var userInitials = initials.value;
-    var storeScores = JSON.parse(localStorage.getItem('highscores'))
-    if (storeScores === null) {
-        storeScores = [];
-    }
-    storeScores.push({
-        initials: userInitials,
-        score: score,
-    });
-    localStorage.setItem('highscores', JSON.stringify(storeScores));
-})
+submitBtn.addEventListener('click', function(event) {
+    event.preventDefault();
+    // hide results page
+    resultContainerEl.setAttribute('id', 'hide');
+    // show highscore page
+    highscoreContaineEl.setAttribute('id', 'show');
 
 
+});
