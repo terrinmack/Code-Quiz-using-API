@@ -17,14 +17,14 @@
   </nav>
 
 <!-- start screen -->
-  <section class="start-container">
+  <section class="start-container" id="show">
     <h1 class="start-title">Code Quiz Challenge!</h1>
       <p class="start-intro">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
         <button class="start-btn">Start Quiz</button>
   </section>
 
-  <!-- quiz screen -->
-  <section class="quiz-container" id="quiz">
+<!-- quiz screen -->
+  <section class="quiz-container" id="hide">
     <h2 class="question">Question Text</h2>
       <ul>
           <button id="a" class="answer">Answer</button>
@@ -32,9 +32,34 @@
           <button id="a" class="answer">Answer</button>
           <button id="a" class="answer">Answer</button>    
       </ul>
-
+      <hr>
+        <div class="feedback" id="hide"></div>
+        <p class="feedback-text">Feedback Text</p>
   </section>
   
+<!-- result screen -->
+  <section class="result-container" id="hide">
+    <h1 class="all-done">All done!</h1>
+      <div>
+        <form id="initials-form" class="initials">
+          <p>Enter your Initials:
+            <input type="text" name="initials" id="initials" class="text-input" />
+            <button class="submit-btn" type="submit">Submit</button>
+          </p>
+        </form>
+      </div>
+  </section>
+
+<!-- highscore screen -->
+  <section class="highscore-container" id="hide">
+    <ul>
+      <li class="initials-list"></li>
+    </ul>
+    <button class="go-back-btn" href=".start-container">Go back</button>
+    <button class="clear-highscores">Clear highscores</button>
+  </section>
+
+
   <script src="./assets/js/script.js"></script>
 </body>
 </html>
