@@ -17,9 +17,9 @@
 # Webpage Image with working link
 <!-- webpage link with image -->
 ### Link https://terrinmack.github.io/Code-Quiz-using-API/
-![Webpage Intro Screenshot](assets/images/webpage-screenshot.jpg)
-![Webpage Question Screenshot](assets/images/webpage-screenshot2.jpg)
-
+![Webpage Intro Screenshot](assets/images/webpage-screenshot-start.jpg)
+![Webpage Question Screenshot](assets/images/webpage-screenshot-question.jpg)
+![Webpage Question Screenshot](assets/images/webpage-screenshot-end.jpg)
 
 <br>
 
