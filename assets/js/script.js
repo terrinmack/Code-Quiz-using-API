@@ -181,7 +181,7 @@ function createHighscore () {
 
 // store highscores 
 function storeScores() {
-    localStorage.setItem("Highscores", JSON.stringify(highscoreList))
+    localStorage.setItem("Highscores", JSON.stringify(userHighscore))
 }
 
 viewHighscoreBtn.addEventListener('click', function(event){

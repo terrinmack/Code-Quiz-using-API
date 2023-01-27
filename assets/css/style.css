@@ -89,6 +89,9 @@ button:hover {
     background-color: violet;
 }
 
+h1 {
+    font-size: 50px;
+}
 /* feedback styling for correct/wrong responses */
 /* gray border bar above feedback */
 hr {
