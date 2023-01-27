@@ -7,7 +7,6 @@
 ### 3. When all questions or the timer reaches 0, the game ends.
 ### 4. Once the game is finished, an input appears to enter the users score.
 ### 5. All of the users scores is kept in local storage and shown in the "view high scores" directory.
-### *** Currently unable to get highscore rendering to be functional :(  **
 <br>
 
 ### This assignment is an example of how to create functional buttons using javascript and web API techniques. The assignment shows the importance of techniques such as local storage and event listeners. 
@@ -19,7 +18,8 @@
 ### Link https://terrinmack.github.io/Code-Quiz-using-API/
 ![Webpage Intro Screenshot](assets/images/webpage-screenshot-start.jpg)
 ![Webpage Question Screenshot](assets/images/webpage-screenshot-question.jpg)
-![Webpage Question Screenshot](assets/images/webpage-screenshot-end.jpg)
+![Webpage Result Page Screenshot](assets/images/webpage-screenshot-end.jpg)
+![Webpage Highscore Page Screenshot](assets/images/webpage-screenshot-highscore.jpg)
 
 <br>
 
