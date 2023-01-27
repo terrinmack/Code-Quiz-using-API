@@ -196,7 +196,6 @@ function renderHighscores() {
     feedbackContainer.setAttribute('id', 'hide');
     highscoreContainerEl.setAttribute('id', 'show');
 }
-
 // view highscore button
 viewHighscoreBtn.addEventListener('click', function(event){
     event.preventDefault()
