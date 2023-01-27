@@ -48,7 +48,6 @@ var questionContainerEl = document.querySelector('.quiz-container');
 var resultContainerEl = document.querySelector('.result-container');
 var highscoreContainerEl = document.querySelector('.highscore-container');
 
-var finalScore = document.querySelector('#final-score');
 var highscoreList = document.querySelector('.highscore-list')
 
 var questionTitle = document.querySelector('.question');
@@ -148,44 +147,58 @@ function endQuiz () {
     // show results
     resultContainerEl.setAttribute('id', 'show');
     // show final score
-    finalScore.innerText = score; 
+    var finalScorePrompt = document.querySelector('.your-final-score');
+    finalScorePrompt.textContent = 'Your final score is: ' + score + '!';
 };
 
-// submit score!
-submitBtn.addEventListener('click', function(event) {
-    event.preventDefault()
-    // hide results page
-    resultContainerEl.setAttribute('id', 'hide');
-    // feedback hide
-    feedbackContainer.setAttribute('id', 'hide')
-    // show highscore page
+// submit score button
+submitBtn.addEventListener('click', function() {
     highscoreContainerEl.setAttribute('id', 'show');
+    var initials = document.querySelector('#initials').value;
+    if (initials === null) {
+        console.log('No initials entered');
+    } else {
+        var finalScore = {
+            initials: initials,
+            score: score
+        }
+        console.log(finalScore);
+        var allScores = localStorage.getItem('allScores');
+        if (allScores === null) {
+            allScores = [];
+        } else {
+            allScores = JSON.parse(allScores);
+        }
+        allScores.push(finalScore);
+        var newScore = JSON.stringify(allScores);
+        localStorage.setItem('allScores', newScore);
 
-    createHighscore();
-    storeScores();
-});
+        console.log(allScores)
+        renderHighscores();
+    }
+})
 
-// create highscore list items
-function createHighscore () {
-    // obtain input value
-    var userInitials = document.getElementById('initials').value;
-    // create a li element for the list
-    var userHighscore = document.createElement('li');
-    // create a prompt for the initials and score
-    userHighscore.textContent = "Initials:" + userInitials + "  " + "Score:" + score,
-    // attach prompt and highscore list so that they appear on page
-    highscoreList.appendChild(userHighscore);
-    
-    console.log(userHighscore)
+// creating list elements for highscores
+var allScores = localStorage.getItem('allScores');
+allScores = JSON.parse(allScores);
+
+if (allScores !==null) {
+    for (var i = 0; i < allScores.length; i++) {
+        var list = document.createElement('li');
+        list.textContent = allScores[i].initials + "   - " + allScores[i].score;
+        highscoreList.appendChild(list);
+    }
 }
 
-// store highscores 
-function storeScores() {
-    localStorage.setItem("Highscores", JSON.stringify(userHighscore))
+// render score page
+function renderHighscores() {
+    resultContainerEl.setAttribute('id', 'hide');
+    feedbackContainer.setAttribute('id', 'hide');
+    highscoreContainerEl.setAttribute('id', 'show');
 }
 
 viewHighscoreBtn.addEventListener('click', function(event){
-    event.preventDefault();
+    event.preventDefault()
     clearInterval(timer);
     // hide start page
     startContainerEl.setAttribute('id', 'hide');
@@ -195,4 +208,11 @@ viewHighscoreBtn.addEventListener('click', function(event){
     resultContainerEl.setAttribute('id', 'hide');
     // show highscsore page
     highscoreContainerEl.setAttribute('id', 'show');
+})
+
+var clear = document.querySelector('.clear-highscores')
+clear.addEventListener('click', function(event) {
+    event.preventDefault()
+    localStorage.clear(allScores)
+    window.location.reload()
 })
