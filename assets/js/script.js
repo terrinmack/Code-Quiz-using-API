@@ -197,6 +197,7 @@ function renderHighscores() {
     highscoreContainerEl.setAttribute('id', 'show');
 }
 
+// view highscore button
 viewHighscoreBtn.addEventListener('click', function(event){
     event.preventDefault()
     clearInterval(timer);
@@ -210,6 +211,7 @@ viewHighscoreBtn.addEventListener('click', function(event){
     highscoreContainerEl.setAttribute('id', 'show');
 })
 
+// clear highscore button
 var clear = document.querySelector('.clear-highscores')
 clear.addEventListener('click', function(event) {
     event.preventDefault()
