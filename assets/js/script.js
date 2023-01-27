@@ -49,12 +49,13 @@ var resultContainerEl = document.querySelector('.result-container');
 var highscoreContainerEl = document.querySelector('.highscore-container');
 
 var finalScore = document.querySelector('#final-score');
+var highscoreList = document.querySelector('.highscore-list')
 
 var questionTitle = document.querySelector('.question');
-var btnGrd = document.querySelector('.btn-grid')
 var feedbackContainer = document.querySelector('.feedback');
 var feedbackEl = document.querySelector('.feedback-text')
 
+var btnGrd = document.querySelector('.btn-grid')
 var startBtn = document.querySelector('.start-btn');
 var submitBtn = document.querySelector('.submit-btn');
 var viewHighscoreBtn = document.querySelector('.view-highscores');
@@ -151,13 +152,36 @@ function endQuiz () {
 };
 
 // submit score!
-submitBtn.addEventListener('click', function(event) {
-    event.preventDefault();
+submitBtn.addEventListener('click', function() {
     // hide results page
     resultContainerEl.setAttribute('id', 'hide');
+    // feedback hide
+    feedbackContainer.setAttribute('id', 'hide')
     // show highscore page
     highscoreContainerEl.setAttribute('id', 'show');
+
+    createHighscore();
+    storeScores();
 });
+
+// create highscore list items
+function createHighscore () {
+    // obtain input value
+    var userInitials = document.getElementById('initials').value;
+    // create a li element for the list
+    var userHighscore = document.createElement('li');
+    // create a prompt for the initials and score
+    userHighscore.textContent = "Initials:" + userInitials + "  " + "Score:" + score,
+    // attach prompt and highscore list so that they appear on page
+    highscoreList.appendChild(userHighscore);
+    
+    console.log(userHighscore)
+}
+
+// store highscores 
+function storeScores() {
+    localStorage.setItem("Highscores", JSON.stringify(highscoreList))
+}
 
 viewHighscoreBtn.addEventListener('click', function(event){
     event.preventDefault();

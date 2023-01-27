@@ -13,6 +13,7 @@
 <!-- navbar -->
   <nav>
     <button class="view-highscores" id="show">View Highscores</button>
+    <!-- countdown timer -->
     <div class="timer">Time: <span class="time-left">0</span>
     </div>
   </nav>
@@ -21,6 +22,7 @@
   <section class="start-container" id="show">
     <h1 class="start-title">Code Quiz Challenge!</h1>
       <p class="start-intro">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+      <!-- start quix button -->
         <button class="start-btn">Start Quiz</button>
   </section>
 
@@ -34,6 +36,7 @@
           <button id="answer3" class="answer-btn">Answer 4</button>    
       </ul>
       <hr>
+      <!-- correct/wrong feedback -->
         <div class="feedback" id="hide">
           <div class="feedback-text"></div>
         </div>
@@ -45,20 +48,30 @@
       <div>
         <p class="your-final-score">Your final score is <span id="final-score">0</span>
         </p>
-        <form id="initials-form" class="initials">
-          <p>Enter your Initials:
-            <input type="text" name="initials" id="initials" class="text-input" />
+
+      <!-- user initials box -->
+            Enter your Initials:
+            <input type="text" name= "initials" placeholder="Initials" id="initials" class="text-input"/>
+
+      <!-- submit button -->
             <button class="submit-btn" type="submit">Submit</button>
-          </p>
-        </form>
+          
       </div>
   </section>
 
 <!-- highscore screen -->
   <section class="highscore-container" id="hide">
-    <ul class="initials-list"></ul>
+
+    <ul class="highscore-list">
+      <!-- highscore list (li) -->
+    </ul>
+
+    <!-- go back button -->
     <button onClick='window.location.reload()' class="go-back-btn">Go back</button>
+
+    <!-- clear highscores button -->
     <button class="clear-highscores">Clear highscores</button>
+
   </section>
 
 <!-- javascript link -->
