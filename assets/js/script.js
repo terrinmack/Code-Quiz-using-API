@@ -152,7 +152,8 @@ function endQuiz () {
 };
 
 // submit score!
-submitBtn.addEventListener('click', function() {
+submitBtn.addEventListener('click', function(event) {
+    event.preventDefault()
     // hide results page
     resultContainerEl.setAttribute('id', 'hide');
     // feedback hide
